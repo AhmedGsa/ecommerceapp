@@ -26,7 +26,9 @@ class _LoginPageState extends State<LoginPage> {
             Icons.arrow_back_ios_new,
             color: Colors.black,
           ),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
       ),
       body: ListView(padding: EdgeInsets.all(20), children: [
@@ -100,7 +102,9 @@ class _LoginPageState extends State<LoginPage> {
           height: 20,
         ),
         OrangeButton(
-          onTap: () {},
+          onTap: () {
+            Navigator.pushNamed(context, "/loginsuccess");
+          },
           text: "Continue",
         ),
         SizedBox(
@@ -140,10 +144,13 @@ class _LoginPageState extends State<LoginPage> {
               style: TextStyle(color: textColor, fontSize: 20),
             ),
             GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, "/register");
+                },
                 child: Text(
-              "Sign Up",
-              style: TextStyle(color: Color(0xFFFF7643), fontSize: 20),
-            ))
+                  "Sign Up",
+                  style: TextStyle(color: Color(0xFFFF7643), fontSize: 20),
+                ))
           ],
         )
       ]),

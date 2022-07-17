@@ -25,7 +25,9 @@ class _ProfilePageState extends State<ProfilePage> {
             Icons.arrow_back_ios_new,
             color: Colors.black,
           ),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
       ),
       body: ListView(
@@ -123,7 +125,8 @@ class _ProfilePageState extends State<ProfilePage> {
 }
 
 class BottumBarButtton extends StatelessWidget {
-  BottumBarButtton({required this.icon, required this.onTap, required this.isSelected});
+  BottumBarButtton(
+      {required this.icon, required this.onTap, required this.isSelected});
   String icon;
   VoidCallback onTap;
   bool isSelected;

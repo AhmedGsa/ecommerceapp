@@ -32,7 +32,12 @@ class _LoginSuccessPageState extends State<LoginSuccessPage> {
               style: TextStyle(fontSize: 35, fontWeight: FontWeight.w600),
               textAlign: TextAlign.center,
             ),
-            OrangeButton(onTap: () {}, text: "Back to home",width: 250,),
+            OrangeButton(
+              onTap: () {
+                Navigator.pushReplacementNamed(context, "/home");
+              },
+              text: "Back to home",
+            ),
           ],
         ),
       ),

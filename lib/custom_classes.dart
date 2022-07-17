@@ -3,7 +3,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'constants.dart';
 
 class IconContainer extends StatelessWidget {
-  IconContainer({required this.img, required this.onTap, this.padding,this.height,this.width});
+  IconContainer(
+      {required this.img,
+      required this.onTap,
+      this.padding,
+      this.height,
+      this.width});
   String img;
   EdgeInsets? padding;
   void Function() onTap;
@@ -26,10 +31,10 @@ class IconContainer extends StatelessWidget {
 }
 
 class MyTextField extends StatelessWidget {
-  MyTextField({required this.label, required this.hint, required this.icon});
+  MyTextField({required this.label, required this.hint, this.icon});
   String label;
   String hint;
-  IconData icon;
+  IconData? icon;
   @override
   Widget build(BuildContext context) {
     return TextField(
@@ -59,34 +64,22 @@ class MyTextField extends StatelessWidget {
 class OrangeButton extends StatelessWidget {
   OrangeButton(
       {required this.onTap,
-      required this.text,
-      this.padding,
-      this.height,
-      this.width});
+      required this.text,});
   String text;
-  double? height;
-  double? width;
   void Function() onTap;
-  EdgeInsets? padding;
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        height: height,
-        width: width,
-        padding: padding ?? EdgeInsets.all(12),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          color: Color(0xFFFF7643),
-        ),
-        child: Center(
-            child: Text(
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        shape: StadiumBorder(),
+        primary: Color(0xFFFF7643),
+        fixedSize: Size(300, 60)
+      ),
+        onPressed: onTap,
+        child: Text(
           text,
           style: TextStyle(
               fontWeight: FontWeight.w500, color: Colors.white, fontSize: 25),
-        )),
-      ),
-    );
+        ));
   }
 }

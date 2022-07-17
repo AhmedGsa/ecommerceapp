@@ -30,7 +30,9 @@ class _DetailsPageState extends State<DetailsPage> {
                         style: TextButton.styleFrom(
                             shape: CircleBorder(),
                             backgroundColor: Colors.white),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
                         child: SvgPicture.asset("assets/icons/Back ICon.svg")),
                   ),
                   Container(
