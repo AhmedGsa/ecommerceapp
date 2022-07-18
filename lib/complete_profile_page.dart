@@ -1,7 +1,6 @@
 import 'package:ecommerceapp/constants.dart';
 import 'package:ecommerceapp/custom_classes.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 class Profile extends StatefulWidget {
   @override

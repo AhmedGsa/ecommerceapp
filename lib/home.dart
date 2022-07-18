@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:custom_navigation_bar/custom_navigation_bar.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'custom_classes.dart';
 
 const kPrimaryColor = Color(0xFFFF7643);
 const kPrimaryLightColor = Color(0xFFFFECDF);
@@ -25,451 +23,483 @@ class _LobbyState extends State<Lobby> {
     {"icon": "assets/icons/Discover.svg", "text": "More"},
   ];
   bool val = true;
-  int _currentIndex = 0;
-  List<String> routes = ["/home", "/home", "/home", "/profilepage"];
+  List<String> routes = ["/home", "/home", "/home", "/profile"];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        resizeToAvoidBottomInset: false,
-        backgroundColor: Colors.white,
-        body: SafeArea(
-            child: Padding(
-                padding: EdgeInsets.all(14),
-                child: SingleChildScrollView(
-                  child: Column(children: [
-                    SizedBox(
-                      height: 4,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          height: 50,
-                          width: 230,
-                          child: TextFormField(
-                            decoration: InputDecoration(
+      resizeToAvoidBottomInset: false,
+      backgroundColor: Colors.white,
+      body: SafeArea(
+          child: Padding(
+              padding: EdgeInsets.all(14),
+              child: SingleChildScrollView(
+                child: Column(children: [
+                  SizedBox(
+                    height: 4,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        height: 50,
+                        width: 230,
+                        child: TextFormField(
+                          decoration: InputDecoration(
 
-                                //TODO will back to this and remove the space between thsi 2 widgets
+                              //TODO will back to this and remove the space between thsi 2 widgets
 
-                                prefixIconConstraints: BoxConstraints(
-                                  minWidth: 30,
-                                ),
-                                prefixIcon: IconButton(
-                                  onPressed: () {
-                                    print("pressed");
-                                  },
-                                  icon: Icon(Icons.search),
-                                ),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(70.0),
-                                  borderSide: BorderSide(
-                                    width: 0,
-                                    style: BorderStyle.none,
-                                  ),
-                                ),
-                                filled: true,
-                                hintStyle: TextStyle(
-                                    color: Color.fromARGB(255, 119, 118, 118)),
-                                hintText: "Search Product",
-                                fillColor: Color(0xFFF3F3F4)),
-                          ),
-                        ),
-                        IconBtnWithCounter(
-                          svgSrc: "assets/icons/Cart Icon.svg",
-                          numOfitem: 3,
-                          press: () {
-                            Navigator.pushNamed(context, "/cart");
-                          },
-                        ),
-                        // ElevatedButton(
-                        //   onPressed: () {
-                        //     Navigator.pushReplacementNamed(context, "/cart");
-                        //   },
-                        //   child: Icon(Icons.shopping_cart,
-                        //       color: Color(0xFFC3C3C4)),
-                        //   style: ElevatedButton.styleFrom(
-                        //     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                        //     shape: CircleBorder(),
-                        //     padding: EdgeInsets.all(8),
-                        //     primary: Color(0xFFF3F3F4),
-                        //   ),
-                        // ),
-                        IconBtnWithCounter(
-                          svgSrc: "assets/icons/Bill Icon.svg",
-                          numOfitem: 2,
-                          press: () {
-                            Navigator.pushReplacementNamed(
-                                context, "/profilepage");
-                          },
-                        ),
-                        // ElevatedButton(
-                        //   onPressed: () {},
-                        //   child: Icon(Icons.notification_add,
-                        //       color: Color(0xFFC3C3C4)),
-                        //   style: ElevatedButton.styleFrom(
-                        //     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                        //     shape: CircleBorder(),
-                        //     padding: EdgeInsets.all(8),
-                        //     primary: Color(0xFFF3F3F4),
-                        //   ),
-                        // ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      // height: 90,
-                      width: double.infinity,
-                      margin: EdgeInsets.all(15),
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 20,
-                        vertical: 15,
-                      ),
-                      decoration: BoxDecoration(
-                        color: Color(0xFF4A3298),
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: Text.rich(
-                        TextSpan(
-                          style: TextStyle(color: Colors.white),
-                          children: [
-                            TextSpan(text: "A Summer Surpise\n"),
-                            TextSpan(
-                              text: "Cashback 20%",
-                              style: TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold,
+                              prefixIconConstraints: BoxConstraints(
+                                minWidth: 30,
                               ),
+                              prefixIcon: IconButton(
+                                onPressed: () {
+                                  print("pressed");
+                                },
+                                icon: Icon(Icons.search),
+                              ),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(70.0),
+                                borderSide: BorderSide(
+                                  width: 0,
+                                  style: BorderStyle.none,
+                                ),
+                              ),
+                              filled: true,
+                              hintStyle: TextStyle(
+                                  color: Color.fromARGB(255, 119, 118, 118)),
+                              hintText: "Search Product",
+                              fillColor: Color(0xFFF3F3F4)),
+                        ),
+                      ),
+                      IconBtnWithCounter(
+                        svgSrc: "assets/icons/Cart Icon.svg",
+                        numOfitem: 3,
+                        press: () {
+                          Navigator.pushNamed(context, "/cart");
+                        },
+                      ),
+                      // ElevatedButton(
+                      //   onPressed: () {
+                      //     Navigator.pushReplacementNamed(context, "/cart");
+                      //   },
+                      //   child: Icon(Icons.shopping_cart,
+                      //       color: Color(0xFFC3C3C4)),
+                      //   style: ElevatedButton.styleFrom(
+                      //     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                      //     shape: CircleBorder(),
+                      //     padding: EdgeInsets.all(8),
+                      //     primary: Color(0xFFF3F3F4),
+                      //   ),
+                      // ),
+                      IconBtnWithCounter(
+                        svgSrc: "assets/icons/Bill Icon.svg",
+                        numOfitem: 2,
+                        press: () {
+                          Navigator.pushNamed(context, "/profile");
+                        },
+                      ),
+                      // ElevatedButton(
+                      //   onPressed: () {},
+                      //   child: Icon(Icons.notification_add,
+                      //       color: Color(0xFFC3C3C4)),
+                      //   style: ElevatedButton.styleFrom(
+                      //     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                      //     shape: CircleBorder(),
+                      //     padding: EdgeInsets.all(8),
+                      //     primary: Color(0xFFF3F3F4),
+                      //   ),
+                      // ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    // height: 90,
+                    width: double.infinity,
+                    margin: EdgeInsets.all(15),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 15,
+                    ),
+                    decoration: BoxDecoration(
+                      color: Color(0xFF4A3298),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Text.rich(
+                      TextSpan(
+                        style: TextStyle(color: Colors.white),
+                        children: [
+                          TextSpan(text: "A Summer Surpise\n"),
+                          TextSpan(
+                            text: "Cashback 20%",
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
                             ),
-                          ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: List.generate(
+                        categories.length,
+                        (index) => CategoryCard(
+                          icon: categories[index]["icon"],
+                          text: categories[index]["text"],
+                          press: () {},
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.all(20),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Special for you",
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.black,
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          print("me");
+                        },
+                        child: Text(
+                          "See More",
+                          style: TextStyle(color: Color(0xFFBBBBBB)),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 15),
+                  SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: List.generate(
-                          categories.length,
-                          (index) => CategoryCard(
-                            icon: categories[index]["icon"],
-                            text: categories[index]["text"],
+                        children: [
+                          SpecialOfferCard(
+                            image: "assets/images/Image Banner 2.png",
+                            category: "Smartphone",
+                            numOfBrands: 18,
                             press: () {},
                           ),
+                          SpecialOfferCard(
+                            image: "assets/images/Image Banner 3.png",
+                            category: "Fashion",
+                            numOfBrands: 24,
+                            press: () {
+                              print("smartphone section");
+                            },
+                          ),
+                        ],
+                      )),
+                  SizedBox(
+                    height: 25,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Popular Product",
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.black,
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Special for you",
-                          style: TextStyle(
-                            fontSize: 18,
-                            color: Colors.black,
-                          ),
+                      GestureDetector(
+                        onTap: () {
+                          print("me");
+                        },
+                        child: const Text(
+                          "See More",
+                          style: TextStyle(color: Color(0xFFBBBBBB)),
                         ),
-                        GestureDetector(
-                          onTap: () {
-                            print("me");
-                          },
-                          child: Text(
-                            "See More",
-                            style: TextStyle(color: Color(0xFFBBBBBB)),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 15),
-                    SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: [
-                            SpecialOfferCard(
-                              image: "assets/images/Image Banner 2.png",
-                              category: "Smartphone",
-                              numOfBrands: 18,
-                              press: () {},
-                            ),
-                            SpecialOfferCard(
-                              image: "assets/images/Image Banner 3.png",
-                              category: "Fashion",
-                              numOfBrands: 24,
-                              press: () {
-                                print("smartphone section");
-                              },
-                            ),
-                          ],
-                        )),
-                    SizedBox(
-                      height: 25,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Popular Product",
-                          style: TextStyle(
-                            fontSize: 18,
-                            color: Colors.black,
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            print("me");
-                          },
-                          child: const Text(
-                            "See More",
-                            style: TextStyle(color: Color(0xFFBBBBBB)),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 20),
-                    SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.only(left: 3),
-                              child: SizedBox(
-                                width: 140,
-                                child: GestureDetector(
-                                  onTap: () {
-                                    Navigator.pushNamed(context, "/details");
-                                  },
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      AspectRatio(
-                                        aspectRatio: 1.02,
-                                        child: Container(
-                                          padding: EdgeInsets.all(25),
-                                          decoration: BoxDecoration(
-                                            color: kSecondaryColor
-                                                .withOpacity(0.1),
-                                            borderRadius:
-                                                BorderRadius.circular(15),
-                                          ),
-                                          child: Hero(
-                                            tag: "gaming",
-                                            child: Image.asset(
-                                                "assets/images/ps4_console_white_1.png"),
-                                          ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 20),
+                  SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(left: 3),
+                            child: SizedBox(
+                              width: 140,
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.pushNamed(context, "/details");
+                                },
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    AspectRatio(
+                                      aspectRatio: 1.02,
+                                      child: Container(
+                                        padding: EdgeInsets.all(25),
+                                        decoration: BoxDecoration(
+                                          color:
+                                              kSecondaryColor.withOpacity(0.1),
+                                          borderRadius:
+                                              BorderRadius.circular(15),
+                                        ),
+                                        child: Hero(
+                                          tag: "gaming",
+                                          child: Image.asset(
+                                              "assets/images/ps4_console_white_1.png"),
                                         ),
                                       ),
-                                      const SizedBox(height: 10),
-                                      Text(
-                                        "Ps4 controller",
-                                        style: TextStyle(color: Colors.black),
-                                        maxLines: 2,
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            "\$30",
-                                            style: TextStyle(
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.w600,
-                                              color: kPrimaryColor,
+                                    ),
+                                    const SizedBox(height: 10),
+                                    Text(
+                                      "Ps4 controller",
+                                      style: TextStyle(color: Colors.black),
+                                      maxLines: 2,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          "\$30",
+                                          style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w600,
+                                            color: kPrimaryColor,
+                                          ),
+                                        ),
+                                        InkWell(
+                                          borderRadius:
+                                              BorderRadius.circular(50),
+                                          onTap: () {},
+                                          child: Container(
+                                            padding: EdgeInsets.all((8)),
+                                            height: 28,
+                                            width: (38),
+                                            decoration: BoxDecoration(
+                                              color: true
+                                                  ? kPrimaryColor
+                                                      .withOpacity(0.15)
+                                                  : kSecondaryColor
+                                                      .withOpacity(0.1),
+                                              shape: BoxShape.circle,
+                                            ),
+                                            child: SvgPicture.asset(
+                                              "assets/icons/Game Icon.svg",
+                                              color: true
+                                                  ? Color(0xFFFF4848)
+                                                  : Color(0xFFDBDEE4),
                                             ),
                                           ),
-                                          InkWell(
-                                            borderRadius:
-                                                BorderRadius.circular(50),
-                                            onTap: () {},
-                                            child: Container(
-                                              padding: EdgeInsets.all((8)),
-                                              height: 28,
-                                              width: (38),
-                                              decoration: BoxDecoration(
-                                                color: true
-                                                    ? kPrimaryColor
-                                                        .withOpacity(0.15)
-                                                    : kSecondaryColor
-                                                        .withOpacity(0.1),
-                                                shape: BoxShape.circle,
-                                              ),
-                                              child: SvgPicture.asset(
-                                                "assets/icons/Game Icon.svg",
-                                                color: true
-                                                    ? Color(0xFFFF4848)
-                                                    : Color(0xFFDBDEE4),
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      )
-                                    ],
-                                  ),
+                                        ),
+                                      ],
+                                    )
+                                  ],
                                 ),
                               ),
                             ),
-                            Padding(
-                              padding: EdgeInsets.only(left: 15),
-                              child: SizedBox(
-                                width: 140,
-                                child: GestureDetector(
-                                  onTap: () {},
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      AspectRatio(
-                                        aspectRatio: 1.02,
-                                        child: Container(
-                                          padding: EdgeInsets.all(25),
-                                          decoration: BoxDecoration(
-                                            color: kSecondaryColor
-                                                .withOpacity(0.1),
-                                            borderRadius:
-                                                BorderRadius.circular(15),
-                                          ),
-                                          child: Hero(
-                                            tag: "jsp",
-                                            child: Image.asset(
-                                                "assets/images/Image Popular Product 2.png"),
-                                          ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(left: 15),
+                            child: SizedBox(
+                              width: 140,
+                              child: GestureDetector(
+                                onTap: () {},
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    AspectRatio(
+                                      aspectRatio: 1.02,
+                                      child: Container(
+                                        padding: EdgeInsets.all(25),
+                                        decoration: BoxDecoration(
+                                          color:
+                                              kSecondaryColor.withOpacity(0.1),
+                                          borderRadius:
+                                              BorderRadius.circular(15),
+                                        ),
+                                        child: Hero(
+                                          tag: "jsp",
+                                          child: Image.asset(
+                                              "assets/images/Image Popular Product 2.png"),
                                         ),
                                       ),
-                                      const SizedBox(height: 10),
-                                      Text(
-                                        "Pants",
-                                        style: TextStyle(color: Colors.black),
-                                        maxLines: 2,
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            "\$29.99",
-                                            style: TextStyle(
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.w600,
-                                              color: kPrimaryColor,
+                                    ),
+                                    const SizedBox(height: 10),
+                                    Text(
+                                      "Pants",
+                                      style: TextStyle(color: Colors.black),
+                                      maxLines: 2,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          "\$29.99",
+                                          style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w600,
+                                            color: kPrimaryColor,
+                                          ),
+                                        ),
+                                        InkWell(
+                                          borderRadius:
+                                              BorderRadius.circular(50),
+                                          onTap: () {},
+                                          child: Container(
+                                            padding: EdgeInsets.all((8)),
+                                            height: 28,
+                                            width: (28),
+                                            decoration: BoxDecoration(
+                                              color: true
+                                                  ? kPrimaryColor
+                                                      .withOpacity(0.15)
+                                                  : kSecondaryColor
+                                                      .withOpacity(0.1),
+                                              shape: BoxShape.circle,
+                                            ),
+                                            child: SvgPicture.asset(
+                                              "assets/icons/Star Icon.svg",
+                                              color: true
+                                                  ? Color(0xFFFF4848)
+                                                  : Color(0xFFDBDEE4),
                                             ),
                                           ),
-                                          InkWell(
-                                            borderRadius:
-                                                BorderRadius.circular(50),
-                                            onTap: () {},
-                                            child: Container(
-                                              padding: EdgeInsets.all((8)),
-                                              height: 28,
-                                              width: (28),
-                                              decoration: BoxDecoration(
-                                                color: true
-                                                    ? kPrimaryColor
-                                                        .withOpacity(0.15)
-                                                    : kSecondaryColor
-                                                        .withOpacity(0.1),
-                                                shape: BoxShape.circle,
-                                              ),
-                                              child: SvgPicture.asset(
-                                                "assets/icons/Star Icon.svg",
-                                                color: true
-                                                    ? Color(0xFFFF4848)
-                                                    : Color(0xFFDBDEE4),
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      )
-                                    ],
-                                  ),
+                                        ),
+                                      ],
+                                    )
+                                  ],
                                 ),
                               ),
                             ),
-                            Padding(
-                              padding: EdgeInsets.only(left: 20),
-                              child: SizedBox(
-                                width: 150,
-                                child: GestureDetector(
-                                  onTap: () {},
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      AspectRatio(
-                                        aspectRatio: 1.02,
-                                        child: Container(
-                                          padding: EdgeInsets.all(25),
-                                          decoration: BoxDecoration(
-                                            color: kSecondaryColor
-                                                .withOpacity(0.1),
-                                            borderRadius:
-                                                BorderRadius.circular(15),
-                                          ),
-                                          child: Hero(
-                                            tag: "my",
-                                            child: Image.asset(
-                                                "assets/images/Image Popular Product 3.png"),
-                                          ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(left: 20),
+                            child: SizedBox(
+                              width: 150,
+                              child: GestureDetector(
+                                onTap: () {},
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    AspectRatio(
+                                      aspectRatio: 1.02,
+                                      child: Container(
+                                        padding: EdgeInsets.all(25),
+                                        decoration: BoxDecoration(
+                                          color:
+                                              kSecondaryColor.withOpacity(0.1),
+                                          borderRadius:
+                                              BorderRadius.circular(15),
+                                        ),
+                                        child: Hero(
+                                          tag: "my",
+                                          child: Image.asset(
+                                              "assets/images/Image Popular Product 3.png"),
                                         ),
                                       ),
-                                      const SizedBox(height: 10),
-                                      Text(
-                                        "Helmet",
-                                        style: TextStyle(color: Colors.black),
-                                        maxLines: 2,
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            "\$30",
-                                            style: TextStyle(
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.w600,
-                                              color: kPrimaryColor,
+                                    ),
+                                    const SizedBox(height: 10),
+                                    Text(
+                                      "Helmet",
+                                      style: TextStyle(color: Colors.black),
+                                      maxLines: 2,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          "\$30",
+                                          style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w600,
+                                            color: kPrimaryColor,
+                                          ),
+                                        ),
+                                        InkWell(
+                                          borderRadius:
+                                              BorderRadius.circular(50),
+                                          onTap: () {},
+                                          child: Container(
+                                            padding: EdgeInsets.all((8)),
+                                            height: 28,
+                                            width: (28),
+                                            decoration: BoxDecoration(
+                                              color: true
+                                                  ? kPrimaryColor
+                                                      .withOpacity(0.15)
+                                                  : kSecondaryColor
+                                                      .withOpacity(0.1),
+                                              shape: BoxShape.circle,
+                                            ),
+                                            child: SvgPicture.asset(
+                                              "assets/icons/Star Icon.svg",
+                                              color: false
+                                                  ? Color(0xFFFF4848)
+                                                  : Color(0xFFDBDEE4),
                                             ),
                                           ),
-                                          InkWell(
-                                            borderRadius:
-                                                BorderRadius.circular(50),
-                                            onTap: () {},
-                                            child: Container(
-                                              padding: EdgeInsets.all((8)),
-                                              height: 28,
-                                              width: (28),
-                                              decoration: BoxDecoration(
-                                                color: true
-                                                    ? kPrimaryColor
-                                                        .withOpacity(0.15)
-                                                    : kSecondaryColor
-                                                        .withOpacity(0.1),
-                                                shape: BoxShape.circle,
-                                              ),
-                                              child: SvgPicture.asset(
-                                                "assets/icons/Star Icon.svg",
-                                                color: false
-                                                    ? Color(0xFFFF4848)
-                                                    : Color(0xFFDBDEE4),
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      )
-                                    ],
-                                  ),
+                                        ),
+                                      ],
+                                    )
+                                  ],
                                 ),
                               ),
                             ),
-                          ],
-                        ))
-                  ]),
-                ))),
-        bottomNavigationBar: CustomNavigationBar(
+                          ),
+                        ],
+                      ))
+                ]),
+              ))),
+      bottomNavigationBar: Container(
+        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+        height: 75,
+        decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(30), topRight: Radius.circular(30))),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            BottumBarButtton(
+              icon: "Shop Icon.svg",
+              onTap: () {
+                Navigator.pushReplacementNamed(context, "/home");
+              },
+              isSelected: true,
+            ),
+            BottumBarButtton(
+              icon: "Heart Icon.svg",
+              onTap: () {},
+              isSelected: false,
+            ),
+            BottumBarButtton(
+              icon: "Chat bubble Icon.svg",
+              onTap: () {},
+              isSelected: false,
+            ),
+            BottumBarButtton(
+              icon: "User Icon.svg",
+              onTap: () {
+                Navigator.pushNamed(context, "/profile");
+              },
+              isSelected: false,
+            ),
+          ],
+        ),
+      ),
+      /*CustomNavigationBar(
           iconSize: 28.0,
           scaleFactor: 0.5,
           selectedColor: Colors.red[300],
@@ -503,7 +533,8 @@ class _LobbyState extends State<Lobby> {
               getPage(index);
             });
           },
-        ));
+        )*/
+    );
   }
 
   void getPage(int index) {

@@ -30,6 +30,24 @@ class IconContainer extends StatelessWidget {
   }
 }
 
+class BottumBarButtton extends StatelessWidget {
+  BottumBarButtton(
+      {required this.icon, required this.onTap, required this.isSelected});
+  String icon;
+  VoidCallback onTap;
+  bool isSelected;
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      child: SvgPicture.asset(
+        "assets/icons/$icon",
+        color: isSelected ? orange : Color(0xffB6B6B6),
+      ),
+      onTap: onTap,
+    );
+  }
+}
+
 class MyTextField extends StatelessWidget {
   MyTextField({required this.label, required this.hint, this.icon});
   String label;
