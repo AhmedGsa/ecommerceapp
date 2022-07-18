@@ -1,6 +1,6 @@
-# ecommerceapp
+# E-CommerceApp
 
-A new Flutter project.
+one of my first projects using flutter, I rebuilt the UI I found in The Flutter Way YouTube Channel !
 
 ## Getting Started
 
